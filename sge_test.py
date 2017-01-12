@@ -74,11 +74,8 @@ class Main(luigi.WrapperTask):
 
     def requires(self):
 
-        tmp = '/gpfs/home/bliven_s/luigi_test'
-        cmd = 'source activate luigi && python {0} "{1}" "{2}"'
         for i in range(3):
-            #dont_remove_tmp_dir=True,
-            yield TestJobTask(i=str(i), n_cpu=i+1,shared_tmp_dir=tmp,job_format=cmd,no_tarball=True)
+            yield TestJobTask(i=str(i), n_cpu=i+1)
 
 if __name__ == '__main__':
 #    tmp = '/gpfs/home/bliven_s/luigi_test'
